@@ -5,7 +5,7 @@
 #include <float.h>
 /*#include <y.tab.h>*/
 FILE *yyin;
-int yylval; /* Para obtener el numero de linea*/
+int yylval; 
 
 %}
 %option noyywrap
@@ -39,14 +39,14 @@ AVG			"AVG"
 DECVAR		"DECVAR"
 ENDDEC		"ENDDEC"
 
-ID			{LETRA}|{LETRA}(({LETRA}|{DIGITO}|{GUION})?({LETRA}|{DIGITO}))*
+ID			{LETRA}|{LETRA}(({LETRA}|{DIGITO}))
 
 CTE_INT		{DIGITO}+
 CTE_REAL	{DIGITO}+"."{DIGITO}+
 CTE_STR		"'"({LETRA}|{DIGITO}|{CARACTER})+"'"
 CTE_CHAR	"''"{LETRA}"''"
 
-COMENTARIOS		"//"({LETRA}|{DIGITO}|{CARACTER})+
+COMENTARIOS		"-/"({LETRA}|{DIGITO}|{CARACTER})+"/-"
 
 
 OP_AS		":""="
@@ -55,15 +55,7 @@ OP_SUM		"+"
 OP_MUL		"*"
 OP_DIV		"/"
 
-PAR_A		"("
-PAR_C		")"
-LLAVE_A		"{"
-LLAVE_C		"}"
-COR_A		"["
-COR_C		"]"
 
-
-COMA		","
 P_COMA		";"
 D_PUNTO		":"
 
@@ -85,6 +77,8 @@ FOR			"FOR"|"for"
 
 %%
 
+
+
 {CTE_INT}			printf("\nConstante entera: %s\n", yytext);
 					 
 {CTE_REAL}			printf("\nConstante real: %s\n", yytext);
@@ -103,6 +97,11 @@ FOR			"FOR"|"for"
 {DO}				printf("\nCondicion do: %s\n", yytext);
 {FOR}				printf("\nCondicion for: %s\n", yytext);
 
+{PARA} 				printf("\nParentesis abre: %s\n", yytext);
+{PARC} 				printf("\nParentesis cierra: %s\n", yytext);
+{CORA} 				printf("\nCorchete Abre: %s\n", yytext);
+{CORC} 				printf("\nCorchete cierra: %s\n", yytext);
+
 
 {ID}				printf("\nVariable Id: %s\n", yytext);
 		
@@ -115,13 +114,6 @@ FOR			"FOR"|"for"
 {COMA}  			printf("\nComa: %s\n", yytext);
 {P_COMA}			printf("\nPunto y Coma: %s\n", yytext);
 {D_PUNTO}			printf("\nDos Puntos: %s\n", yytext);
-
-{PAR_A}		printf("\nSimbolo ([{}]): %s\n", yytext);
-{PAR_C}		printf("\nSimbolo ([{}]): %s\n", yytext);
-{LLAVE_A}	printf("\nSimbolo ([{}]): %s\n", yytext);	
-{LLAVE_C}	printf("\nSimbolo ([{}]): %s\n", yytext);	
-{COR_A}		printf("\nSimbolo ([{}]): %s\n", yytext);
-{COR_C}		printf("\nSimbolo ([{}]): %s\n", yytext);
 
 
 {MEN}		printf("\nSimbolo Comparador <=!>: %s\n", yytext);	

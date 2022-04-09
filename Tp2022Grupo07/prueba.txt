@@ -1,0 +1,9 @@
+int x;
+
+a:=15;
+
+a:= (a+b)/5;
+
+if (a>b)
+then a:=a+1;
+endif 
