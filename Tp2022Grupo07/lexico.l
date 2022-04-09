@@ -5,7 +5,7 @@
 #include <float.h>
 /*#include <y.tab.h>*/
 FILE *yyin;
-int yylval;
+int yylval; /* Para obtener el numero de linea*/
 
 %}
 %option noyywrap
@@ -13,8 +13,13 @@ int yylval;
 
 DIGITO		[0-9]
 LETRA		[a-zA-Z]
+ESPACIO		[" "]
+INICOMEN	"-/"
+FINCOMEN	"/-"
 CARACTER	" "|"."|":"|";"|"?"|"/"|"="
 GUION		"-"
+COMA		","
+PCOMA		";"
 
 
 INT			"int"|"INT"
