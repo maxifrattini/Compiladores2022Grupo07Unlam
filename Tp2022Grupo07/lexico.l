@@ -14,18 +14,30 @@ int yylval; /* Para obtener el numero de linea*/
 DIGITO		[0-9]
 LETRA		[a-zA-Z]
 ESPACIO		[" "]
-INICOMEN	"-/"
-FINCOMEN	"/-"
+
 CARACTER	" "|"."|":"|";"|"?"|"/"|"="
 GUION		"-"
 COMA		","
 PCOMA		";"
+PUNTO		"."
+PARA 		"("
+PARC 		")"
+CORA 		"["
+CORC 		"]"
 
+INICOMEN	"-/"
+FINCOMEN	"/-"
 
 INT			"int"|"INT"
 REAL		"real"|"REAL"
 STRING		"string"|"STRING"
 CHAR		"char"|"CHAR"
+
+BETWEEN		"BETWEEN"
+AVG			"AVG"
+
+DECVAR		"DECVAR"
+ENDDEC		"ENDDEC"
 
 ID			{LETRA}|{LETRA}(({LETRA}|{DIGITO}|{GUION})?({LETRA}|{DIGITO}))*
 
