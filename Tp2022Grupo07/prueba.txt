@@ -1,9 +1,31 @@
-int x;
+DECVAR
 
-a:=15;
+    int x:=0;
+    int z:=18;
+    int i:=0;
+    string cadena ;
+    real r:=18.15 ;
 
-a:= (a+b)/5;
+ENDDEC
 
-if (a>b)
-then a:=a+1;
-endif 
+while (x<10)
+{
+        if ( BETWEEN (x, [2.5 ; 8.22]) ) 
+            then 
+        {
+            
+            z:=z*x;
+        }
+            endif 
+    x:=x+1;
+}
+
+cadena := 'Hola Mundo'
+
+for (i:=0 , i>3 , i:=i+1)
+{
+    AVG ([2 , i+z , 64, x]);
+    r:=r/14*8;
+
+}
+

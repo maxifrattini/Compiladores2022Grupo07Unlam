@@ -126,7 +126,10 @@ variable1 : STRING
 ENDDEC
 TEMAS ESPECIALES
 BETWEEN
-Esta función del lenguaje, tomará como entrada una variable numérica y dos expresiones numéricas. Devolverá verdadero o falso según la variable enunciada se encuentre dentro del rango definido por ambos límites.
+Esta función del lenguaje, tomará como entrada una variable numérica y dos expresiones 
+numéricas. 
+Devolverá verdadero o falso según la variable enunciada se encuentre dentro del rango 
+definido por ambos límites.
 Esta función será utilizada en las condiciones, presentes en ciclos y selecciones.
 BETWEEN(variable1, [expresion1; expresion2])
 Ejemplo: 
@@ -134,7 +137,8 @@ Ejemplo:
 BETWEEN (z, [2.3 ; 11.22])
 AVG
 
-Esta función del lenguaje, tomará como entrada una lista de expresiones numéricas y devolverá el promedio calculado a partir de la evaluación de los componentes de dicha lista.
+Esta función del lenguaje, tomará como entrada una lista de expresiones numéricas y 
+devolverá el promedio calculado a partir de la evaluación de los componentes de dicha lista.
 Esta función será utilizada en cualquier expresión del lenguaje.
 AVG([lista de expresiones])
 Donde lista de expresiones será una secuencia de expresiones numéricas separadas por coma (,) y delimitada por corchetes
