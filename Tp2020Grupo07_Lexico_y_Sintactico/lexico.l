@@ -3,9 +3,10 @@
 #include <stdlib.h>
 #include <string.h>
 #include <float.h>
-#include <y.tab.h>
+#include "y.tab.h"
 FILE *yyin;
 int yylval; 
+
 
 %}
 
@@ -32,7 +33,7 @@ COMENTARIOS		"-/"({LETRA}|{DIGITO}|{CARACTER})+"/-"
 
 ID			{LETRA}|{LETRA}(({LETRA}|{DIGITO}))*
 
-GUION		"-"
+
 COMA		","
 PCOMA		";"
 PARA 		"("
@@ -115,12 +116,11 @@ STRING		"string"|"STRING"
 {OP_AS}				{ return OP_AS; }
 {OP_SUM}			{ return OP_SUM; }
 {OP_MUL}			{ return OP_MUL; }
-{OP_DIV}			{ return OP_DIC; }
+{OP_DIV}			{ return OP_DIV; }
 
 {COMA}  			{ return COMA; }
 {PCOMA}				{ return PCOMA; }
 {DPUNTO}			{ return DPUNTO; }
-{GUION}				{ return GUION; }
 
 
 {MEN}		{ return MEN; }
@@ -144,3 +144,9 @@ STRING		"string"|"STRING"
 
 %%
 
+int yyerror(void)
+	{
+	printf("Error Lexico");
+	system ("Pause");
+	exit (1);
+	}

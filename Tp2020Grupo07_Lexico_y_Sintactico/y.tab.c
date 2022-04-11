@@ -154,11 +154,18 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-#include <float.h>
-/*#include <y.tab.h>*/
+#include <stdio.h>
+#include <stdlib.h>
+
+#include "y.tab.h"
 FILE *yyin;
 int yylval; 
+extern int yylineno;
+
+int yylex();
+
+
+
 
 
 
@@ -193,7 +200,7 @@ typedef int YYSTYPE;
 
 
 /* Line 216 of yacc.c.  */
-#line 197 "y.tab.c"
+#line 204 "y.tab.c"
 
 #ifdef short
 # undef short
@@ -417,7 +424,7 @@ union yyalloc
 /* YYNRULES -- Number of rules.  */
 #define YYNRULES  9
 /* YYNRULES -- Number of states.  */
-#define YYNSTATES  13
+#define YYNSTATES  15
 
 /* YYTRANSLATE(YYLEX) -- Bison symbol number corresponding to YYLEX.  */
 #define YYUNDEFTOK  2
@@ -473,14 +480,14 @@ static const yytype_uint8 yyprhs[] =
 static const yytype_int8 yyrhs[] =
 {
       42,     0,    -1,    43,    -1,    42,    26,    43,    -1,    42,
-      29,    43,    -1,    44,    -1,    43,    28,    44,    -1,    43,
+      29,    43,    -1,    44,    -1,    43,    27,    44,    -1,    43,
       28,    44,    -1,     3,    -1,    40,    -1
 };
 
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    19,    19,    20,    21,    22,    23,    24,    25,    26
+       0,    26,    26,    27,    28,    29,    30,    31,    32,    33
 };
 #endif
 
@@ -529,7 +536,7 @@ static const yytype_uint8 yyr2[] =
 static const yytype_uint8 yydefact[] =
 {
        0,     8,     9,     0,     2,     5,     1,     0,     0,     0,
-       3,     4,     6
+       0,     3,     4,     6,     7
 };
 
 /* YYDEFGOTO[NTERM-NUM].  */
@@ -540,17 +547,17 @@ static const yytype_int8 yydefgoto[] =
 
 /* YYPACT[STATE-NUM] -- Index in YYTABLE of the portion describing
    STATE-NUM.  */
-#define YYPACT_NINF -25
+#define YYPACT_NINF -26
 static const yytype_int8 yypact[] =
 {
-      -3,   -25,   -25,     1,   -24,   -25,   -25,    -3,    -3,    -3,
-     -24,   -24,   -25
+      -3,   -26,   -26,     1,   -25,   -26,   -26,    -3,    -3,    -3,
+      -3,   -25,   -25,   -26,   -26
 };
 
 /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-     -25,   -25,    -5,    -4
+     -26,   -26,    -2,    -1
 };
 
 /* YYTABLE[YYPACT[STATE-NUM]].  What to do in state STATE-NUM.  If
@@ -560,7 +567,7 @@ static const yytype_int8 yypgoto[] =
 #define YYTABLE_NINF -1
 static const yytype_uint8 yytable[] =
 {
-       1,     6,    10,    11,     9,    12,     0,     0,     0,     0,
+       1,     6,     9,    10,     0,    11,    12,     0,    13,    14,
        0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
        0,     0,     0,     0,     0,     0,     0,     7,     0,     0,
        8,     0,     0,     0,     0,     0,     0,     2
@@ -568,7 +575,7 @@ static const yytype_uint8 yytable[] =
 
 static const yytype_int8 yycheck[] =
 {
-       3,     0,     7,     8,    28,     9,    -1,    -1,    -1,    -1,
+       3,     0,    27,    28,    -1,     7,     8,    -1,     9,    10,
       -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
       -1,    -1,    -1,    -1,    -1,    -1,    -1,    26,    -1,    -1,
       29,    -1,    -1,    -1,    -1,    -1,    -1,    40
@@ -578,8 +585,8 @@ static const yytype_int8 yycheck[] =
    symbol of state STATE-NUM.  */
 static const yytype_uint8 yystos[] =
 {
-       0,     3,    40,    42,    43,    44,     0,    26,    29,    28,
-      43,    43,    44
+       0,     3,    40,    42,    43,    44,     0,    26,    29,    27,
+      28,    43,    43,    44,    44
 };
 
 #define yyerrok		(yyerrstatus = 0)
@@ -1395,7 +1402,7 @@ yyreduce:
     {
       
 /* Line 1267 of yacc.c.  */
-#line 1399 "y.tab.c"
+#line 1406 "y.tab.c"
       default: break;
     }
   YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);
@@ -1609,28 +1616,26 @@ yyreturn:
 }
 
 
-#line 29 "sintactico.y"
+#line 36 "sintactico.y"
 
 
-int main(int argc, char *argv[])
+int main(int argc,char *argv[])
 {
-	if ((yyin = fopen(argv[1], "rt")) == NULL)
-	{
-	printf("\n Error al abrir archico: %s\n ", argv[1]);
-	
-	}
-	else
-	{
-		yylex();
-	}
-	fclose(yyin);
-	return 0;
-
+  if ((yyin = fopen(argv[1], "rt")) == NULL)
+  {
+	printf("\nNo se puede abrir el archivo: %s\n", argv[1]);
+  }
+  else
+  {
+	yyparse();
+  }
+  fclose(yyin);
+  return 0;
 }
 
 int yyerror(void)
-	{
-	printf("Error Lexico");
-	system ("Pause");
-	exit (1);
-	}
+     {
+       printf("Syntax Error en la linea: %d\n", yylineno);
+	 system ("Pause");
+	 exit (1);
+     }

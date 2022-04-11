@@ -1,11 +1,15 @@
 %{
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-#include <float.h>
-/*#include <y.tab.h>*/
+#include <stdio.h>
+#include <stdlib.h>
+
+#include "y.tab.h"
 FILE *yyin;
 int yylval; 
+extern int yylineno;
+
+
 
 %}
 
@@ -20,7 +24,7 @@ Expresion : Termino ;
 Expresion : Expresion OP_SUM Termino ;
 Expresion : Expresion OP_RES Termino ;
 Termino : Factor;
-Termino : Termino OP_DIV Factor ;
+Termino : Termino OP_MUL Factor ;
 Termino : Termino OP_DIV Factor;
 Factor : CTE_INT ;
 Factor : ID ;
@@ -28,25 +32,23 @@ Factor : ID ;
 
 %%
 
-int main(int argc, char *argv[])
+int main(int argc,char *argv[])
 {
-	if ((yyin = fopen(argv[1], "rt")) == NULL)
-	{
-	printf("\n Error al abrir archico: %s\n ", argv[1]);
-	
-	}
-	else
-	{
-		yylex();
-	}
-	fclose(yyin);
-	return 0;
-
+  if ((yyin = fopen(argv[1], "rt")) == NULL)
+  {
+	printf("\nNo se puede abrir el archivo: %s\n", argv[1]);
+  }
+  else
+  {
+	yyparse();
+  }
+  fclose(yyin);
+  return 0;
 }
 
 int yyerror(void)
-	{
-	printf("Error Lexico");
-	system ("Pause");
-	exit (1);
-	}
+     {
+       printf("Syntax Error en la linea: %d\n", yylineno);
+	 system ("Pause");
+	 exit (1);
+     }
