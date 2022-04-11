@@ -1,0 +1,248 @@
+Terminals which are not used
+
+   CTE_REAL
+   CTE_STRING
+   INT
+   REAL
+   STRING
+   IF
+   THEN
+   ELSE
+   WHILE
+   DO
+   FOR
+   BETWEEN
+   AVG
+   DEFVAR
+   ENDDEC
+   PARA
+   PARC
+   CORA
+   CORC
+   LLAVA
+   LLAVC
+   OP_AS
+   OP_MUL
+   COMA
+   PCOMA
+   DPUNTO
+   GUION
+   MEN
+   MAY
+   MEN_I
+   MAY_I
+   DIST
+   IGU
+
+
+Rules never reduced
+
+    6 Termino: Termino OP_DIV Factor
+
+
+State 12 conflicts: 4 reduce/reduce
+
+
+Grammar
+
+    0 $accept: Expresion $end
+
+    1 Expresion: Termino
+    2          | Expresion OP_SUM Termino
+    3          | Expresion OP_RES Termino
+
+    4 Termino: Factor
+    5        | Termino OP_DIV Factor
+    6        | Termino OP_DIV Factor
+
+    7 Factor: CTE_INT
+    8       | ID
+
+
+Terminals, with rules where they appear
+
+$end (0) 0
+error (256)
+CTE_INT (258) 7
+CTE_REAL (259)
+CTE_STRING (260)
+INT (261)
+REAL (262)
+STRING (263)
+IF (264)
+THEN (265)
+ELSE (266)
+WHILE (267)
+DO (268)
+FOR (269)
+BETWEEN (270)
+AVG (271)
+DEFVAR (272)
+ENDDEC (273)
+PARA (274)
+PARC (275)
+CORA (276)
+CORC (277)
+LLAVA (278)
+LLAVC (279)
+OP_AS (280)
+OP_SUM (281) 2
+OP_MUL (282)
+OP_DIV (283) 5 6
+OP_RES (284) 3
+COMA (285)
+PCOMA (286)
+DPUNTO (287)
+GUION (288)
+MEN (289)
+MAY (290)
+MEN_I (291)
+MAY_I (292)
+DIST (293)
+IGU (294)
+ID (295) 8
+
+
+Nonterminals, with rules where they appear
+
+$accept (41)
+    on left: 0
+Expresion (42)
+    on left: 1 2 3, on right: 0 2 3
+Termino (43)
+    on left: 4 5 6, on right: 1 2 3 5 6
+Factor (44)
+    on left: 7 8, on right: 4 5 6
+
+
+state 0
+
+    0 $accept: . Expresion $end
+
+    CTE_INT  shift, and go to state 1
+    ID       shift, and go to state 2
+
+    Expresion  go to state 3
+    Termino    go to state 4
+    Factor     go to state 5
+
+
+state 1
+
+    7 Factor: CTE_INT .
+
+    $default  reduce using rule 7 (Factor)
+
+
+state 2
+
+    8 Factor: ID .
+
+    $default  reduce using rule 8 (Factor)
+
+
+state 3
+
+    0 $accept: Expresion . $end
+    2 Expresion: Expresion . OP_SUM Termino
+    3          | Expresion . OP_RES Termino
+
+    $end    shift, and go to state 6
+    OP_SUM  shift, and go to state 7
+    OP_RES  shift, and go to state 8
+
+
+state 4
+
+    1 Expresion: Termino .
+    5 Termino: Termino . OP_DIV Factor
+    6        | Termino . OP_DIV Factor
+
+    OP_DIV  shift, and go to state 9
+
+    $default  reduce using rule 1 (Expresion)
+
+
+state 5
+
+    4 Termino: Factor .
+
+    $default  reduce using rule 4 (Termino)
+
+
+state 6
+
+    0 $accept: Expresion $end .
+
+    $default  accept
+
+
+state 7
+
+    2 Expresion: Expresion OP_SUM . Termino
+
+    CTE_INT  shift, and go to state 1
+    ID       shift, and go to state 2
+
+    Termino  go to state 10
+    Factor   go to state 5
+
+
+state 8
+
+    3 Expresion: Expresion OP_RES . Termino
+
+    CTE_INT  shift, and go to state 1
+    ID       shift, and go to state 2
+
+    Termino  go to state 11
+    Factor   go to state 5
+
+
+state 9
+
+    5 Termino: Termino OP_DIV . Factor
+    6        | Termino OP_DIV . Factor
+
+    CTE_INT  shift, and go to state 1
+    ID       shift, and go to state 2
+
+    Factor  go to state 12
+
+
+state 10
+
+    2 Expresion: Expresion OP_SUM Termino .
+    5 Termino: Termino . OP_DIV Factor
+    6        | Termino . OP_DIV Factor
+
+    OP_DIV  shift, and go to state 9
+
+    $default  reduce using rule 2 (Expresion)
+
+
+state 11
+
+    3 Expresion: Expresion OP_RES Termino .
+    5 Termino: Termino . OP_DIV Factor
+    6        | Termino . OP_DIV Factor
+
+    OP_DIV  shift, and go to state 9
+
+    $default  reduce using rule 3 (Expresion)
+
+
+state 12
+
+    5 Termino: Termino OP_DIV Factor .
+    6        | Termino OP_DIV Factor .
+
+    $end      reduce using rule 5 (Termino)
+    $end      [reduce using rule 6 (Termino)]
+    OP_SUM    reduce using rule 5 (Termino)
+    OP_SUM    [reduce using rule 6 (Termino)]
+    OP_DIV    reduce using rule 5 (Termino)
+    OP_DIV    [reduce using rule 6 (Termino)]
+    OP_RES    reduce using rule 5 (Termino)
+    OP_RES    [reduce using rule 6 (Termino)]
+    $default  reduce using rule 5 (Termino)
