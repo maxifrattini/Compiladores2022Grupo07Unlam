@@ -1,14 +1,12 @@
 %{
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdio.h>
-#include <stdlib.h>
-
 #include "y.tab.h"
 FILE *yyin;
 int yylval; 
-extern int yylineno;
+int yyerror();
 
+int yylex();
 
 
 %}
@@ -20,15 +18,15 @@ extern int yylineno;
 
 %%
 
-Expresion : Termino ;
-Expresion : Expresion OP_SUM Termino ;
-Expresion : Expresion OP_RES Termino ;
-Termino : Factor;
-Termino : Termino OP_MUL Factor ;
-Termino : Termino OP_DIV Factor;
-Factor : CTE_INT ;
-Factor : ID ;
-
+Expresion : Termino {printf("\nExpresion : Termino\n");} 
+Expresion : Expresion OP_SUM Termino {printf("\nExpresion : Expresion OP_SUM Termino\n");} 
+Expresion : Expresion OP_RES Termino {printf("\nExpresion : Expresion OP_RES Termino\n");} 
+Termino : Factor {printf("\nTermino : Factor\n");} 
+Termino : Termino OP_MUL Factor {printf("\nTermino : Termino OP_MUL Factor\n");} 
+Termino : Termino OP_DIV Factor {printf("\nTermino : Termino OP_DIV Factor\n");} 
+Factor : CTE_INT {printf("\nFactor : CTE_INT\n");} 
+Factor : ID {printf("\nFactor : ID \n");} 
+Factor : PARA Expresion PARC {printf("\nFactor : (Expresion) \n");} 
 
 %%
 
@@ -46,9 +44,3 @@ int main(int argc,char *argv[])
   return 0;
 }
 
-int yyerror(void)
-     {
-       printf("Syntax Error en la linea: %d\n", yylineno);
-	 system ("Pause");
-	 exit (1);
-     }

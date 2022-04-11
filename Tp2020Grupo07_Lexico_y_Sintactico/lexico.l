@@ -114,7 +114,10 @@ STRING		"string"|"STRING"
 {LLAVC} 			{ return LLAVC; }
 
 {OP_AS}				{ return OP_AS; }
+
+
 {OP_SUM}			{ return OP_SUM; }
+{OP_RES}			{ return OP_RES; }
 {OP_MUL}			{ return OP_MUL; }
 {OP_DIV}			{ return OP_DIV; }
 

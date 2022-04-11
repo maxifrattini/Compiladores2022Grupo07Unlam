@@ -15,8 +15,6 @@ Terminals which are not used
    AVG
    DEFVAR
    ENDDEC
-   PARA
-   PARC
    CORA
    CORC
    LLAVA
@@ -48,6 +46,7 @@ Grammar
 
     7 Factor: CTE_INT
     8       | ID
+    9       | PARA Expresion PARC
 
 
 Terminals, with rules where they appear
@@ -70,8 +69,8 @@ BETWEEN (270)
 AVG (271)
 DEFVAR (272)
 ENDDEC (273)
-PARA (274)
-PARC (275)
+PARA (274) 9
+PARC (275) 9
 CORA (276)
 CORC (277)
 LLAVA (278)
@@ -99,11 +98,11 @@ Nonterminals, with rules where they appear
 $accept (41)
     on left: 0
 Expresion (42)
-    on left: 1 2 3, on right: 0 2 3
+    on left: 1 2 3, on right: 0 2 3 9
 Termino (43)
     on left: 4 5 6, on right: 1 2 3 5 6
 Factor (44)
-    on left: 7 8, on right: 4 5 6
+    on left: 7 8 9, on right: 4 5 6
 
 
 state 0
@@ -111,11 +110,12 @@ state 0
     0 $accept: . Expresion $end
 
     CTE_INT  shift, and go to state 1
-    ID       shift, and go to state 2
+    PARA     shift, and go to state 2
+    ID       shift, and go to state 3
 
-    Expresion  go to state 3
-    Termino    go to state 4
-    Factor     go to state 5
+    Expresion  go to state 4
+    Termino    go to state 5
+    Factor     go to state 6
 
 
 state 1
@@ -127,122 +127,157 @@ state 1
 
 state 2
 
+    9 Factor: PARA . Expresion PARC
+
+    CTE_INT  shift, and go to state 1
+    PARA     shift, and go to state 2
+    ID       shift, and go to state 3
+
+    Expresion  go to state 7
+    Termino    go to state 5
+    Factor     go to state 6
+
+
+state 3
+
     8 Factor: ID .
 
     $default  reduce using rule 8 (Factor)
 
 
-state 3
+state 4
 
     0 $accept: Expresion . $end
     2 Expresion: Expresion . OP_SUM Termino
     3          | Expresion . OP_RES Termino
 
-    $end    shift, and go to state 6
-    OP_SUM  shift, and go to state 7
-    OP_RES  shift, and go to state 8
+    $end    shift, and go to state 8
+    OP_SUM  shift, and go to state 9
+    OP_RES  shift, and go to state 10
 
 
-state 4
+state 5
 
     1 Expresion: Termino .
     5 Termino: Termino . OP_MUL Factor
     6        | Termino . OP_DIV Factor
 
-    OP_MUL  shift, and go to state 9
-    OP_DIV  shift, and go to state 10
+    OP_MUL  shift, and go to state 11
+    OP_DIV  shift, and go to state 12
 
     $default  reduce using rule 1 (Expresion)
 
 
-state 5
+state 6
 
     4 Termino: Factor .
 
     $default  reduce using rule 4 (Termino)
 
 
-state 6
+state 7
+
+    2 Expresion: Expresion . OP_SUM Termino
+    3          | Expresion . OP_RES Termino
+    9 Factor: PARA Expresion . PARC
+
+    PARC    shift, and go to state 13
+    OP_SUM  shift, and go to state 9
+    OP_RES  shift, and go to state 10
+
+
+state 8
 
     0 $accept: Expresion $end .
 
     $default  accept
 
 
-state 7
+state 9
 
     2 Expresion: Expresion OP_SUM . Termino
 
     CTE_INT  shift, and go to state 1
-    ID       shift, and go to state 2
+    PARA     shift, and go to state 2
+    ID       shift, and go to state 3
 
-    Termino  go to state 11
-    Factor   go to state 5
-
-
-state 8
-
-    3 Expresion: Expresion OP_RES . Termino
-
-    CTE_INT  shift, and go to state 1
-    ID       shift, and go to state 2
-
-    Termino  go to state 12
-    Factor   go to state 5
-
-
-state 9
-
-    5 Termino: Termino OP_MUL . Factor
-
-    CTE_INT  shift, and go to state 1
-    ID       shift, and go to state 2
-
-    Factor  go to state 13
+    Termino  go to state 14
+    Factor   go to state 6
 
 
 state 10
 
-    6 Termino: Termino OP_DIV . Factor
+    3 Expresion: Expresion OP_RES . Termino
 
     CTE_INT  shift, and go to state 1
-    ID       shift, and go to state 2
+    PARA     shift, and go to state 2
+    ID       shift, and go to state 3
 
-    Factor  go to state 14
+    Termino  go to state 15
+    Factor   go to state 6
 
 
 state 11
+
+    5 Termino: Termino OP_MUL . Factor
+
+    CTE_INT  shift, and go to state 1
+    PARA     shift, and go to state 2
+    ID       shift, and go to state 3
+
+    Factor  go to state 16
+
+
+state 12
+
+    6 Termino: Termino OP_DIV . Factor
+
+    CTE_INT  shift, and go to state 1
+    PARA     shift, and go to state 2
+    ID       shift, and go to state 3
+
+    Factor  go to state 17
+
+
+state 13
+
+    9 Factor: PARA Expresion PARC .
+
+    $default  reduce using rule 9 (Factor)
+
+
+state 14
 
     2 Expresion: Expresion OP_SUM Termino .
     5 Termino: Termino . OP_MUL Factor
     6        | Termino . OP_DIV Factor
 
-    OP_MUL  shift, and go to state 9
-    OP_DIV  shift, and go to state 10
+    OP_MUL  shift, and go to state 11
+    OP_DIV  shift, and go to state 12
 
     $default  reduce using rule 2 (Expresion)
 
 
-state 12
+state 15
 
     3 Expresion: Expresion OP_RES Termino .
     5 Termino: Termino . OP_MUL Factor
     6        | Termino . OP_DIV Factor
 
-    OP_MUL  shift, and go to state 9
-    OP_DIV  shift, and go to state 10
+    OP_MUL  shift, and go to state 11
+    OP_DIV  shift, and go to state 12
 
     $default  reduce using rule 3 (Expresion)
 
 
-state 13
+state 16
 
     5 Termino: Termino OP_MUL Factor .
 
     $default  reduce using rule 5 (Termino)
 
 
-state 14
+state 17
 
     6 Termino: Termino OP_DIV Factor .
 

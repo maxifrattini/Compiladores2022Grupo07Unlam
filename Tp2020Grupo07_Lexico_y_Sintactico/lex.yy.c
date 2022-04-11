@@ -376,8 +376,8 @@ static void yy_fatal_error (yyconst char msg[]  );
 	*yy_cp = '\0'; \
 	(yy_c_buf_p) = yy_cp;
 
-#define YY_NUM_RULES 44
-#define YY_END_OF_BUFFER 45
+#define YY_NUM_RULES 45
+#define YY_END_OF_BUFFER 46
 /* This struct is not used in this scanner,
    but its presence is necessary. */
 struct yy_trans_info
@@ -387,20 +387,20 @@ struct yy_trans_info
 	};
 static yyconst flex_int16_t yy_accept[133] =
     {   0,
-        0,    0,   45,   43,   41,   40,   42,   43,   18,   19,
-       26,   25,   28,   43,    2,   27,    1,    1,   30,   29,
-       31,   43,   32,   37,   37,   37,   37,   37,   37,   37,
-       37,   37,   37,   37,   20,   21,   37,   37,   37,   37,
-       37,   37,   37,   37,   22,   23,   39,    0,    0,    2,
-        0,    0,    1,    2,    1,   24,   33,   35,   36,   34,
-       37,   37,   37,   37,   11,   37,   37,   37,    7,   37,
-       37,   37,   37,   37,   37,   37,   37,   37,   37,   37,
-       37,   37,    3,    0,    0,   14,   37,   37,   37,   37,
-       37,   12,    4,   37,   37,   37,   37,   37,   37,   37,
+        0,    0,   46,   44,   42,   41,   43,   44,   18,   19,
+       27,   25,   29,   26,    2,   28,    1,    1,   31,   30,
+       32,   44,   33,   38,   38,   38,   38,   38,   38,   38,
+       38,   38,   38,   38,   20,   21,   38,   38,   38,   38,
+       38,   38,   38,   38,   22,   23,   40,    0,    0,    2,
+        0,    0,    1,    2,    1,   24,   34,   36,   37,   35,
+       38,   38,   38,   38,   11,   38,   38,   38,    7,   38,
+       38,   38,   38,   38,   38,   38,   38,   38,   38,   38,
+       38,   38,    3,    0,    0,   14,   38,   38,   38,   38,
+       38,   12,    4,   38,   38,   38,   38,   38,   38,   38,
 
-       37,   37,   37,    0,   37,   37,   37,    9,   37,    5,
-       37,    8,   37,   37,   37,   37,   38,   37,   37,   37,
-       37,   37,   10,   37,   37,   37,   15,   17,   16,    6,
+       38,   38,   38,    0,   38,   38,   38,    9,   38,    5,
+       38,    8,   38,   38,   38,   38,   39,   38,   38,   38,
+       38,   38,   10,   38,   38,   38,   15,   17,   16,    6,
        13,    0
     } ;
 
@@ -555,11 +555,11 @@ static yyconst flex_int16_t yy_chk[284] =
     } ;
 
 /* Table of booleans, true if rule could match eol. */
-static yyconst flex_int32_t yy_rule_can_match_eol[45] =
+static yyconst flex_int32_t yy_rule_can_match_eol[46] =
     {   0,
 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 
-    1, 0, 0, 0, 0,     };
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+    1, 1, 0, 0, 0, 0,     };
 
 static yy_state_type yy_last_accepting_state;
 static char *yy_last_accepting_cpos;
@@ -993,107 +993,112 @@ YY_RULE_SETUP
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 117 "lexico.l"
+#line 119 "lexico.l"
 { return OP_SUM; }
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 118 "lexico.l"
-{ return OP_MUL; }
+#line 120 "lexico.l"
+{ return OP_RES; }
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 119 "lexico.l"
-{ return OP_DIV; }
+#line 121 "lexico.l"
+{ return OP_MUL; }
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 121 "lexico.l"
-{ return COMA; }
+#line 122 "lexico.l"
+{ return OP_DIV; }
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 122 "lexico.l"
-{ return PCOMA; }
+#line 124 "lexico.l"
+{ return COMA; }
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 123 "lexico.l"
-{ return DPUNTO; }
+#line 125 "lexico.l"
+{ return PCOMA; }
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
 #line 126 "lexico.l"
-{ return MEN; }
+{ return DPUNTO; }
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 127 "lexico.l"
-{ return MAY; }	
+#line 129 "lexico.l"
+{ return MEN; }
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 128 "lexico.l"
-{ return MEN_I; }
+#line 130 "lexico.l"
+{ return MAY; }	
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 129 "lexico.l"
-{ return MAY_I; }
+#line 131 "lexico.l"
+{ return MEN_I; }
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 130 "lexico.l"
-{ return DIST; }
+#line 132 "lexico.l"
+{ return MAY_I; }
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 131 "lexico.l"
-{ return IGU; }
+#line 133 "lexico.l"
+{ return DIST; }
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 133 "lexico.l"
-{return ID; }
+#line 134 "lexico.l"
+{ return IGU; }
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 135 "lexico.l"
-{;}
+#line 136 "lexico.l"
+{return ID; }
 	YY_BREAK
 case 39:
-/* rule 39 can match eol */
 YY_RULE_SETUP
 #line 138 "lexico.l"
-
+{;}
 	YY_BREAK
 case 40:
 /* rule 40 can match eol */
 YY_RULE_SETUP
-#line 139 "lexico.l"
+#line 141 "lexico.l"
 
 	YY_BREAK
 case 41:
+/* rule 41 can match eol */
 YY_RULE_SETUP
-#line 140 "lexico.l"
+#line 142 "lexico.l"
 
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 141 "lexico.l"
+#line 143 "lexico.l"
 
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 143 "lexico.l"
-printf("\nCaracter Desconocido: %s\n", yytext);
+#line 144 "lexico.l"
+
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 145 "lexico.l"
+#line 146 "lexico.l"
+printf("\nCaracter Desconocido: %s\n", yytext);
+	YY_BREAK
+case 45:
+YY_RULE_SETUP
+#line 148 "lexico.l"
 ECHO;
 	YY_BREAK
-#line 1097 "lex.yy.c"
+#line 1102 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2102,7 +2107,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 145 "lexico.l"
+#line 148 "lexico.l"
 
 
 
