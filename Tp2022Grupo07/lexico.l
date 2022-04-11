@@ -8,8 +8,11 @@ FILE *yyin;
 int yylval; 
 
 %}
+
 %option noyywrap
-%option yylineno
+
+/* Para conseguir el numero de lineas */
+%option yylineno 
 
 DIGITO		[0-9]
 LETRA		[a-zA-Z]
@@ -136,6 +139,7 @@ STRING		"string"|"STRING"
 \t
 " "
 
+. 			printf("\nCaracter Desconocido: %s\n", yytext);
 
 %%
 
