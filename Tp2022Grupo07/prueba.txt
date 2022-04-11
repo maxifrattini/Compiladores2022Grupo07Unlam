@@ -4,7 +4,10 @@ DECVAR
     int z:=18;
     int i:=0;
     string cadena ;
-    real r:=18.15 ;
+    real r1:= 18.15 ;
+    real r2:= .13 ;
+    real r3:= 0.15 ;
+    real r4:= -18. ;
 
 ENDDEC
 
@@ -20,7 +23,9 @@ while (x<10)
     x:=x+1;
 }
 
-cadena := 'Hola Mundo'
+-/Esto es un comentario/-
+
+cadena := "Hola Mundo"
 
 for (i:=0 , i>3 , i:=i+1)
 {

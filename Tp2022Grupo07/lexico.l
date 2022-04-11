@@ -19,9 +19,11 @@ CARACTER	" "|"."|":"|";"|"?"|"/"|"="
 INICOMEN	"-/"
 FINCOMEN	"/-"
 
+/* 0?"."{DIGITO}*|{1-9}+"."{DIGITO}*  */
+
+CTE_REAL	(-?{DIGITO}*"."{DIGITO}*)
 CTE_INT		(-?[1-9]{DIGITO}*)|0
-CTE_REAL	{DIGITO}?"."{DIGITO}*
-CTE_STRING	"'"({LETRA}|{DIGITO}|{CARACTER})+"'"
+CTE_STRING	\"({LETRA}|{DIGITO}|{CARACTER})+\"
 
 COMENTARIOS		"-/"({LETRA}|{DIGITO}|{CARACTER})+"/-"
 
@@ -29,7 +31,6 @@ ID			{LETRA}|{LETRA}(({LETRA}|{DIGITO}))*
 
 GUION		"-"
 COMA		","
-PUNTO		"@"
 PCOMA		";"
 PARA 		"("
 PARC 		")"
@@ -80,9 +81,9 @@ STRING		"string"|"STRING"
 
 %%
 
-{CTE_INT}			printf("\nTipo de dato entero: %s\n", yytext);
-{CTE_REAL}			printf("\nTipo de dato real: %s\n", yytext);
-{CTE_STRING}		printf("\nTipo de dato string: %s\n", yytext);
+{CTE_INT}			printf("\nTipo Entero: %s\n", yytext);
+{CTE_REAL}			printf("\nTipo Real: %s\n", yytext);
+{CTE_STRING}		printf("\nTipo Rtring: %s\n", yytext);
 
 {INT}				printf("\nTipo de dato entero: %s\n", yytext);
 {REAL}				printf("\nTipo de dato real: %s\n", yytext);
@@ -95,10 +96,10 @@ STRING		"string"|"STRING"
 {DO}				printf("\nCondicion do: %s\n", yytext);
 {FOR}				printf("\nCondicion for: %s\n", yytext);
 
-{BETWEEN}			printf("\nPalabra reservada: %s\n", yytext);
-{AVG}				printf("\nPalabra reservada: %s\n", yytext);
-{DECVAR}			printf("\nPalabra reservada: %s\n", yytext);
-{ENDDEC}			printf("\nPalabra reservada: %s\n", yytext);
+{BETWEEN}			printf("\nPalabra reservada BETWEEN: %s\n", yytext);
+{AVG}				printf("\nPalabra reservada AVG: %s\n", yytext);
+{DECVAR}			printf("\nPalabra reservada DECVAR: %s\n", yytext);
+{ENDDEC}			printf("\nPalabra reservada ENDDEC: %s\n", yytext);
 
 {PARA} 				printf("\nParentesis abre: %s\n", yytext);
 {PARC} 				printf("\nParentesis cierra: %s\n", yytext);
@@ -113,7 +114,6 @@ STRING		"string"|"STRING"
 {OP_DIV}			printf("\nOperador Div: %s\n", yytext);
 
 {COMA}  			printf("\nComa: %s\n", yytext);
-{PUNTO}				printf("\nPunto: %s\n", yytext);
 {PCOMA}				printf("\nPunto y Coma: %s\n", yytext);
 {DPUNTO}			printf("\nDos Puntos: %s\n", yytext);
 {GUION}				printf("\nGuion: %s\n", yytext);
