@@ -39,85 +39,93 @@
    /* Put the tokens into the symbol table, so that GDB and other debuggers
       know about them.  */
    enum yytokentype {
-     CTE_INT = 258,
-     CTE_REAL = 259,
-     CTE_STRING = 260,
-     INT = 261,
-     REAL = 262,
-     STRING = 263,
-     IF = 264,
-     THEN = 265,
-     ELSE = 266,
-     WHILE = 267,
-     DO = 268,
-     FOR = 269,
-     BETWEEN = 270,
-     AVG = 271,
-     DEFVAR = 272,
-     ENDDEC = 273,
-     PARA = 274,
-     PARC = 275,
-     CORA = 276,
-     CORC = 277,
-     LLAVA = 278,
-     LLAVC = 279,
-     OP_AS = 280,
-     OP_SUM = 281,
-     OP_MUL = 282,
-     OP_DIV = 283,
-     OP_RES = 284,
-     COMA = 285,
-     PCOMA = 286,
-     DPUNTO = 287,
-     GUION = 288,
-     MEN = 289,
-     MAY = 290,
-     MEN_I = 291,
-     MAY_I = 292,
-     DIST = 293,
-     IGU = 294,
-     ID = 295
+     ID = 258,
+     CTE_INT = 259,
+     CTE_REAL = 260,
+     CTE_STRING = 261,
+     INT = 262,
+     REAL = 263,
+     STRING = 264,
+     IF = 265,
+     THEN = 266,
+     ELSE = 267,
+     WHILE = 268,
+     DO = 269,
+     FOR = 270,
+     AND = 271,
+     OR = 272,
+     BETWEEN = 273,
+     AVG = 274,
+     DECVAR = 275,
+     ENDDEC = 276,
+     WRITE = 277,
+     READ = 278,
+     PARA = 279,
+     PARC = 280,
+     CORA = 281,
+     CORC = 282,
+     LLAVA = 283,
+     LLAVC = 284,
+     OP_AS = 285,
+     OP_SUM = 286,
+     OP_MUL = 287,
+     OP_DIV = 288,
+     OP_RES = 289,
+     COMA = 290,
+     PCOMA = 291,
+     DPUNTO = 292,
+     GUION = 293,
+     MEN = 294,
+     MAY = 295,
+     MEN_I = 296,
+     MAY_I = 297,
+     DIST = 298,
+     IGU = 299
    };
 #endif
 /* Tokens.  */
-#define CTE_INT 258
-#define CTE_REAL 259
-#define CTE_STRING 260
-#define INT 261
-#define REAL 262
-#define STRING 263
-#define IF 264
-#define THEN 265
-#define ELSE 266
-#define WHILE 267
-#define DO 268
-#define FOR 269
-#define BETWEEN 270
-#define AVG 271
-#define DEFVAR 272
-#define ENDDEC 273
-#define PARA 274
-#define PARC 275
-#define CORA 276
-#define CORC 277
-#define LLAVA 278
-#define LLAVC 279
-#define OP_AS 280
-#define OP_SUM 281
-#define OP_MUL 282
-#define OP_DIV 283
-#define OP_RES 284
-#define COMA 285
-#define PCOMA 286
-#define DPUNTO 287
-#define GUION 288
-#define MEN 289
-#define MAY 290
-#define MEN_I 291
-#define MAY_I 292
-#define DIST 293
-#define IGU 294
-#define ID 295
+#define ID 258
+#define CTE_INT 259
+#define CTE_REAL 260
+#define CTE_STRING 261
+#define INT 262
+#define REAL 263
+#define STRING 264
+#define IF 265
+#define THEN 266
+#define ELSE 267
+#define WHILE 268
+#define DO 269
+#define FOR 270
+#define AND 271
+#define OR 272
+#define BETWEEN 273
+#define AVG 274
+#define DECVAR 275
+#define ENDDEC 276
+#define WRITE 277
+#define READ 278
+#define PARA 279
+#define PARC 280
+#define CORA 281
+#define CORC 282
+#define LLAVA 283
+#define LLAVC 284
+#define OP_AS 285
+#define OP_SUM 286
+#define OP_MUL 287
+#define OP_DIV 288
+#define OP_RES 289
+#define COMA 290
+#define PCOMA 291
+#define DPUNTO 292
+#define GUION 293
+#define MEN 294
+#define MAY 295
+#define MEN_I 296
+#define MAY_I 297
+#define DIST 298
+#define IGU 299
 
 
 

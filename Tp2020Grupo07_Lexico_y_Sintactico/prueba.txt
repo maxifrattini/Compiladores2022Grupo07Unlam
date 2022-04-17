@@ -1,1 +1,39 @@
-5 / (8 - 6)
+DECVAR  
+
+INT A:=5 ;
+
+REAL : x ;
+
+STRING : zeta ;
+
+
+ENDDEC
+
+zeta := "Hola mundo"
+
+READ H 
+
+IF a > b AND BETWEEN (a, [2 ; a*(b+4)])
+
+ THEN 
+ 
+ a:=a + 1
+
+ ELSE
+
+ b:= a + 2
+ 
+
+while a > b 
+{
+
+    x := x / 3
+    b := b * x
+    a := AVG [x,b,c+1]
+
+    
+}
+
+WRITE zeta
+
+WRITE "ESTE ES EL FIN"

@@ -4,7 +4,9 @@
 #include <string.h>
 #include <float.h>
 #include "y.tab.h"
+
 FILE *yyin;
+
 int yylval; 
 
 
@@ -18,14 +20,14 @@ int yylval;
 DIGITO		[0-9]
 LETRA		[a-zA-Z]
 ESPACIO		[" "]
-CARACTER	" "|"."|":"|";"|"?"|"/"|"="
+CARACTER	" "|"&"|"%"|"$"|"#"|"@"|"!"
 
 INICOMEN	"-/"
 FINCOMEN	"/-"
 
 /* 0?"."{DIGITO}*|{1-9}+"."{DIGITO}*  */
 
-CTE_REAL	(-?{DIGITO}*"."{DIGITO}*)
+CTE_REAL	{DIGITO}+"."{DIGITO}*
 CTE_INT		(-?[1-9]{DIGITO}*)|0
 CTE_STRING	\"({LETRA}|{DIGITO}|{CARACTER})+\"
 
@@ -44,8 +46,7 @@ LLAVA 		"{"
 LLAVC 		"}"
 DPUNTO		":"
 
-
-OP_AS		":""="
+OP_AS		":="
 
 /* Operadores aritmeticos */
 OP_SUM		"+"
@@ -70,12 +71,17 @@ WHILE		"WHILE"|"while"
 DO			"DO"|"do"
 FOR			"FOR"|"for"
 
+AND			"AND"|"and"
+OR			"OR"|"or"
+
 /* Palabras reservadas finciones especiales */
 
 BETWEEN		"BETWEEN"
 AVG			"AVG"
 DECVAR		"DECVAR"
 ENDDEC		"ENDDEC"
+WRITE		"WRITE"
+READ		"READ"
 
 /* Palabras reservadas tipo de datos */
 
@@ -84,6 +90,9 @@ REAL		"real"|"REAL"
 STRING		"string"|"STRING"
 
 %%
+
+
+{OP_AS}				{ return OP_AS; }
 
 {CTE_INT}			{ return CTE_INT; }
 {CTE_REAL}			{ return CTE_REAL; }
@@ -100,12 +109,18 @@ STRING		"string"|"STRING"
 {DO}				{ return DO; }
 {FOR}				{ return FOR; }
 
+{AND}				{ return AND; }
+{OR}				{ return OR; }
+
+
 {BETWEEN}			{ return BETWEEN; }
 {AVG}				{ return AVG; }
-{DECVAR}			{ return DEFVAR; }
+{DECVAR}			{ return DECVAR; }
 {ENDDEC}			{ return ENDDEC; }
 
-"DEFVAR"|"defvar"		
+{WRITE}				{ return WRITE; }
+{READ}				{ return READ; }
+	
 {PARA} 				{ return PARA; }
 {PARC} 				{ return PARC; }
 {CORA} 				{ return CORA; }
@@ -113,7 +128,7 @@ STRING		"string"|"STRING"
 {LLAVA}				{ return LLAVA; }
 {LLAVC} 			{ return LLAVC; }
 
-{OP_AS}				{ return OP_AS; }
+
 
 
 {OP_SUM}			{ return OP_SUM; }

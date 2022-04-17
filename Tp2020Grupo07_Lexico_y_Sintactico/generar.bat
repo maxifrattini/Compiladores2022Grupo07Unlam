@@ -2,9 +2,9 @@ c:\GnuWin32\bin\flex lexico.l
 
 c:\GnuWin32\bin\bison -dyv sintactico.y 
 
-c:\MinGW\bin\gcc.exe ts.c lex.yy.c y.tab.c -o primera.exe
+c:\MinGW\bin\gcc.exe lex.yy.c y.tab.c -o primera.exe
 pause
-primera.exe prueba_WHILE.txt
+primera.exe prueba.txt
 pause
 
 
