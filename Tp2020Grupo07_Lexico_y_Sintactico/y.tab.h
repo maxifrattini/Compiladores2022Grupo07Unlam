@@ -80,7 +80,8 @@
      MEN_I = 296,
      MAY_I = 297,
      DIST = 298,
-     IGU = 299
+     IGU = 299,
+     NOT = 300
    };
 #endif
 /* Tokens.  */
@@ -126,6 +127,7 @@
 #define MAY_I 297
 #define DIST 298
 #define IGU 299
+#define NOT 300
 
 
 

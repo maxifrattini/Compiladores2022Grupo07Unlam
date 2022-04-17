@@ -1,11 +1,8 @@
 DECVAR  
 
-INT A:=5 ;
+a , b : INT ;
 
-REAL : x ;
-
-STRING : zeta ;
-
+a , b : INT :=0 ;
 
 ENDDEC
 

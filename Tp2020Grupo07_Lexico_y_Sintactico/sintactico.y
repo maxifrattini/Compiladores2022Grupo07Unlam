@@ -19,7 +19,7 @@ int yylex();
 %right OP_AS 
 %token OP_SUM OP_MUL OP_DIV OP_RES 
 %token COMA PCOMA DPUNTO GUION 
-%token MEN MAY MEN_I MAY_I DIST IGU 
+%token MEN MAY MEN_I MAY_I DIST IGU NOT
 
 %start progra
 
@@ -38,12 +38,15 @@ sentencia : READ CTE_STRING {printf("\nsentencia : READ CADENA\n");}
 
 declaraciones: declaracion {printf("\nDeclaraciones : declaracion\n");}
 declaraciones:  declaraciones declaracion {printf("\nDeclaraciones: declaraciones declaracion \n");}
-declaracion: INT DPUNTO ID PCOMA {printf("\nINT DPUNTO ID PCOMA\n");}
-declaracion: REAL DPUNTO ID PCOMA {printf("\nREAL DPUNTO ID PCOMA\n");}
-declaracion : STRING DPUNTO ID PCOMA {printf("\nSTRING DPUNTO ID PCOMA\n");}
 
-declaracion: INT asignacion PCOMA {printf("\nINT DPUNTO ID ExpresionPCOMA\n");}
-declaracion: REAL asignacion PCOMA {printf("\nREAL DPUNTO ID Expresion PCOMA\n");}
+declaracion : listavar DPUNTO tdato PCOMA {printf("\nDeclaracion : ID COMA ID DPUNTO INT PCOMA\n");}
+declaracion : listavar DPUNTO tdato OP_AS expresion PCOMA {printf("\nDeclaracion : ID COMA ID DPUNTO INT OP_AS expresion PCOMA\n");}
+listavar : ID
+listavar : listavar COMA ID
+tdato : INT
+tdato : STRING
+tdato : REAL
+
 
 sentencia : asignacion {printf("\nSentencia : asignacion  \n");}
 sentencia : iteracion {printf("\nSentencia : iteracion \n");}
@@ -72,6 +75,13 @@ comparador : MEN_I {printf("\n Comparador : >= \n");}
 comparador : MAY_I {printf("\n Comparador : <= \n");} 
 comparador : DIST {printf("\n Comparador : != \n");} 
 comparador : IGU {printf("\n Comparador : == \n");} 
+
+comparador : NOT MEN {printf("\n Comparador : < \n");} 
+comparador : NOT MAY {printf("\n Comparador : > \n");} 
+comparador : NOT MEN_I {printf("\n Comparador : >= \n");} 
+comparador : NOT MAY_I {printf("\n Comparador : <= \n");} 
+comparador : NOT DIST {printf("\n Comparador : != \n");} 
+comparador : NOT IGU {printf("\n Comparador : == \n");} 
 
 expresion : expresion OP_SUM termino {printf("\nExpresion : Expresion OP_SUM Termino\n");} 
 expresion : expresion OP_RES termino {printf("\nExpresion : Expresion OP_RES Termino\n");} 

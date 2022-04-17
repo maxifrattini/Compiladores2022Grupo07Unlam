@@ -45,6 +45,7 @@ CORC 		"]"
 LLAVA 		"{"
 LLAVC 		"}"
 DPUNTO		":"
+NOT			"!="
 
 OP_AS		":="
 
@@ -136,17 +137,19 @@ STRING		"string"|"STRING"
 {OP_MUL}			{ return OP_MUL; }
 {OP_DIV}			{ return OP_DIV; }
 
+
 {COMA}  			{ return COMA; }
 {PCOMA}				{ return PCOMA; }
 {DPUNTO}			{ return DPUNTO; }
 
 
-{MEN}		{ return MEN; }
-{MAY}		{ return MAY; }	
-{MEN_I}		{ return MEN_I; }
-{MAY_I}		{ return MAY_I; }
-{DIST}		{ return DIST; }
-{IGU}		{ return IGU; }
+{MEN}				{ return MEN; }
+{MAY}				{ return MAY; }	
+{MEN_I}				{ return MEN_I; }
+{MAY_I}				{ return MAY_I; }
+{DIST}				{ return DIST; }
+{IGU}				{ return IGU; }
+{NOT}				{ return NOT; }
 
 {ID}		{return ID; }
 
