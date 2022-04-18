@@ -1,0 +1,16 @@
+Grupo n7 
+
+Apellido y Nombre	      DNI	
+
+AVILA MARTIN EZEQUIEL	39464543	
+FRATTINI MAXIMILIANO	26849323			
+SICULIN LUCIANO NAHUEL	39213320
+
+
+
+Temas Especiales        	GCI	            Comisión	    Lenguaje
+
+BETWEEN / AVG	        Polaca Inversa	   Lunes Noche         C
+
+
+				
