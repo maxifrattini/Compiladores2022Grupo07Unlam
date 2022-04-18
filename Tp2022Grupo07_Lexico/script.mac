@@ -1,5 +1,0 @@
-flex lexico.l
-
-gcc lex.yy.c -o prueba
-
-./prueba prueba.txt  
