@@ -17,12 +17,11 @@ READ H
 IF a > b AND BETWEEN (a, [2 ; a*(b+4)]) and (b == 5)
 
  THEN 
- 
- a:=a + 1
+ {  a:=a + 1 }
  
  ELSE
 
- b:= a + 2
+ { b:= a + 2 }
  
 
 while != ( a > b ) and y > t

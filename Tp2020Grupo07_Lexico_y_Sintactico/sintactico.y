@@ -56,8 +56,8 @@ sentencia : seleccion {printf("\nSentencia : seleccion \n");}
 asignacion : ID OP_AS expresion {printf("\nAsignacion : ID OP_AS Expresion \n");} 
 asignacion : ID OP_AS CTE_STRING {printf("\nAsignacion : ID OP_AS Cte String\n");} 
 
-seleccion : IF condicion THEN asignacion ELSE asignacion {printf("\nSeleccion : IF condicion THEN programa ELSE programa \n");}
-seleccion : IF condicion THEN asignacion {printf("\nSeleccion : IF condicion THEN programa \n");}
+seleccion : IF condicion THEN LLAVA programa LLAVC ELSE LLAVA programa LLAVC {printf("\nSeleccion : IF condicion THEN programa ELSE programa \n");}
+seleccion : IF condicion THEN LLAVA programa LLAVC {printf("\nSeleccion : IF condicion THEN programa \n");}
 
 iteracion : WHILE condicion LLAVA programa LLAVC {printf("\nIteracion : WHILE condicion LLAVA programa LLAVC \n");}
 
