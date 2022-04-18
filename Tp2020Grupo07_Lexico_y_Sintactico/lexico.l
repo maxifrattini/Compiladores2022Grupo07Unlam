@@ -9,6 +9,24 @@ FILE *yyin;
 
 int yylval; 
 
+int yyerror(void)
+	{
+	printf("Error Lexico");
+	system ("Pause");
+	exit (1);
+	}
+
+int verifica(char *ptr){
+	int value = atoi(ptr);
+	if (value < -32768 || value > 32767 ) {
+		printf("\nError Variable fuera de rango!! %s\n", yytext);
+		return yyerror();
+		
+	}
+	return 0;
+
+}
+
 
 %}
 
@@ -95,7 +113,7 @@ STRING		"string"|"STRING"
 
 {OP_AS}				{ return OP_AS; }
 
-{CTE_INT}			{ return CTE_INT; }
+{CTE_INT}			{ verifica(yytext); return CTE_INT; }
 {CTE_REAL}			{ return CTE_REAL; }
 {CTE_STRING}		{ return CTE_STRING; }
 
@@ -161,13 +179,9 @@ STRING		"string"|"STRING"
 \t
 " "
 
-. 			printf("\nCaracter Desconocido: %s\n", yytext);
+. 			 {printf("\nCaracter Desconocido: %s\n", yytext); yyerror();}
 
 %%
 
-int yyerror(void)
-	{
-	printf("Error Lexico");
-	system ("Pause");
-	exit (1);
-	}
+
+

@@ -2,7 +2,7 @@ DECVAR
 
 a , b : INT ;
 
-a , b : INT :=0 ;
+a , b : INT := 4000 ;
 
 ENDDEC
 
@@ -34,3 +34,5 @@ while != ( a > b ) and y > t
 WRITE zeta
 
 WRITE "ESTE ES EL FIN"
+
+@

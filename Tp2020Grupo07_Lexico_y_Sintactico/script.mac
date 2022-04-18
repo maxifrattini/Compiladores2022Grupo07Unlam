@@ -15,28 +15,3 @@ gcc lex.yy.c y.tab.c -o primera.exe
 
 //git status -s
 
-DECVAR  
-
-A , B : INT ;
-
-A , B : INT :=5 ;
-
-REAL : x ;
-
-STRING : zeta ;
-
-
-ENDDEC
-
-listavar DPUNTO INT PCOMA
-declaracion :listavar DPUNTO REAL PCOMA
-declaracion :listavar DPUNTO STRING PCOMA
-declaracion :listavar DPUNTO INT asignacion PCOMA
-declaracion :listavar DPUNTO REAL asignacion PCOMA
-declaracion :listavar DPUNTO STRING asignacion PCOMA
-listavar : ID
-listavar : listavar COMA ID
-
-
-declaracion: INT asignacion PCOMA {printf("\nINT DPUNTO ID ExpresionPCOMA\n");}
-declaracion: REAL asignacion PCOMA {printf("\nREAL DPUNTO ID Expresion PCOMA\n");}

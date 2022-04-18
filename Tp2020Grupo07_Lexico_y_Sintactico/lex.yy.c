@@ -387,21 +387,21 @@ struct yy_trans_info
 	};
 static yyconst flex_int16_t yy_accept[139] =
     {   0,
-        0,    0,   50,   48,   46,   45,   47,   48,   48,   22,
-       23,   30,   28,   32,   29,   31,    2,    2,   34,   33,
-       35,   48,   36,   42,   42,   42,   42,   42,   42,   42,
-       42,   42,   42,   42,   42,   24,   25,   42,   42,   42,
-       42,   42,   42,   42,   42,   42,   42,   26,   27,   44,
-       41,    0,    0,    0,    2,    3,    0,    2,    1,   37,
-       39,   40,   38,   42,   42,   42,   42,   42,   12,   42,
+        0,    0,   50,   48,   46,   45,   47,   48,   48,   23,
+       24,   31,   29,   33,   30,   32,    2,    2,   35,   34,
+       36,   48,   37,   42,   42,   42,   42,   42,   42,   42,
+       42,   42,   42,   42,   42,   25,   26,   42,   42,   42,
+       42,   42,   42,   42,   42,   42,   42,   27,   28,   44,
+       16,    0,    0,    0,    2,    3,    0,    2,    1,   38,
+       40,   41,   39,   42,   42,   42,   42,   42,   12,   42,
        42,   42,    8,   42,   15,   42,   42,   42,   42,   42,
        42,   42,   42,   42,   42,   42,   42,   42,    4,    0,
-        0,    2,    3,   14,   17,   42,   42,   42,   42,   13,
+        0,    2,    3,   14,   18,   42,   42,   42,   42,   13,
 
         5,   42,   42,   42,   42,   42,   42,   42,   42,   42,
-       42,    0,   42,   42,   10,   42,   21,    6,   42,    9,
+       42,    0,   42,   42,   10,   42,   22,    6,   42,    9,
        42,   42,   42,   42,   43,   42,   42,   42,   42,   11,
-       20,   42,   42,   18,   19,    7,   16,    0
+       21,   42,   42,   19,   20,    7,   17,    0
     } ;
 
 static yyconst flex_int32_t yy_ec[256] =
@@ -590,6 +590,24 @@ FILE *yyin;
 
 int yylval; 
 
+int yyerror(void)
+	{
+	printf("Error Lexico");
+	system ("Pause");
+	exit (1);
+	}
+
+int verifica(char *ptr){
+	int value = atoi(ptr);
+	if (value < -32768 || value > 32767 ) {
+		printf("\nError Variable fuera de rango!! %s\n", yytext);
+		return yyerror();
+		
+	}
+	return 0;
+
+}
+
 
 /* Para conseguir el numero de lineas */
 /* 0?"."{DIGITO}*|{1-9}+"."{DIGITO}*  */
@@ -598,7 +616,7 @@ int yylval;
 /* Palabras reservadas sentencias */
 /* Palabras reservadas finciones especiales */
 /* Palabras reservadas tipo de datos */
-#line 602 "lex.yy.c"
+#line 620 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -780,11 +798,11 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
     
-#line 93 "lexico.l"
+#line 111 "lexico.l"
 
 
 
-#line 788 "lex.yy.c"
+#line 806 "lex.yy.c"
 
 	if ( !(yy_init) )
 		{
@@ -879,252 +897,252 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 96 "lexico.l"
+#line 114 "lexico.l"
 { return OP_AS; }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 98 "lexico.l"
-{ return CTE_INT; }
+#line 116 "lexico.l"
+{ verifica(yytext); return CTE_INT; }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 99 "lexico.l"
+#line 117 "lexico.l"
 { return CTE_REAL; }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 100 "lexico.l"
+#line 118 "lexico.l"
 { return CTE_STRING; }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 102 "lexico.l"
+#line 120 "lexico.l"
 { return INT; }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 103 "lexico.l"
+#line 121 "lexico.l"
 { return REAL; }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 104 "lexico.l"
+#line 122 "lexico.l"
 { return STRING; }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 106 "lexico.l"
+#line 124 "lexico.l"
 { return IF; }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 107 "lexico.l"
+#line 125 "lexico.l"
 { return THEN; }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 108 "lexico.l"
+#line 126 "lexico.l"
 { return ELSE; }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 109 "lexico.l"
+#line 127 "lexico.l"
 { return WHILE; }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 110 "lexico.l"
+#line 128 "lexico.l"
 { return DO; }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 111 "lexico.l"
+#line 129 "lexico.l"
 { return FOR; }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 113 "lexico.l"
+#line 131 "lexico.l"
 { return AND; }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 114 "lexico.l"
+#line 132 "lexico.l"
 { return OR; }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 117 "lexico.l"
-{ return BETWEEN; }
+#line 133 "lexico.l"
+{ return NOT; }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 118 "lexico.l"
-{ return AVG; }
+#line 135 "lexico.l"
+{ return BETWEEN; }
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 119 "lexico.l"
-{ return DECVAR; }
+#line 136 "lexico.l"
+{ return AVG; }
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 120 "lexico.l"
-{ return ENDDEC; }
+#line 137 "lexico.l"
+{ return DECVAR; }
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 122 "lexico.l"
-{ return WRITE; }
+#line 138 "lexico.l"
+{ return ENDDEC; }
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 123 "lexico.l"
-{ return READ; }
+#line 140 "lexico.l"
+{ return WRITE; }
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 125 "lexico.l"
-{ return PARA; }
+#line 141 "lexico.l"
+{ return READ; }
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 126 "lexico.l"
-{ return PARC; }
+#line 143 "lexico.l"
+{ return PARA; }
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 127 "lexico.l"
-{ return CORA; }
+#line 144 "lexico.l"
+{ return PARC; }
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 128 "lexico.l"
-{ return CORC; }
+#line 145 "lexico.l"
+{ return CORA; }
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 129 "lexico.l"
-{ return LLAVA; }
+#line 146 "lexico.l"
+{ return CORC; }
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 130 "lexico.l"
-{ return LLAVC; }
+#line 147 "lexico.l"
+{ return LLAVA; }
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 135 "lexico.l"
-{ return OP_SUM; }
+#line 148 "lexico.l"
+{ return LLAVC; }
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 136 "lexico.l"
-{ return OP_RES; }
+#line 153 "lexico.l"
+{ return OP_SUM; }
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 137 "lexico.l"
-{ return OP_MUL; }
+#line 154 "lexico.l"
+{ return OP_RES; }
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 138 "lexico.l"
-{ return OP_DIV; }
+#line 155 "lexico.l"
+{ return OP_MUL; }
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 141 "lexico.l"
-{ return COMA; }
+#line 156 "lexico.l"
+{ return OP_DIV; }
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 142 "lexico.l"
-{ return PCOMA; }
+#line 159 "lexico.l"
+{ return COMA; }
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 143 "lexico.l"
-{ return DPUNTO; }
+#line 160 "lexico.l"
+{ return PCOMA; }
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 146 "lexico.l"
-{ return MEN; }
+#line 161 "lexico.l"
+{ return DPUNTO; }
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 147 "lexico.l"
-{ return MAY; }	
+#line 164 "lexico.l"
+{ return MEN; }
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 148 "lexico.l"
-{ return MEN_I; }
+#line 165 "lexico.l"
+{ return MAY; }	
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 149 "lexico.l"
-{ return MAY_I; }
+#line 166 "lexico.l"
+{ return MEN_I; }
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 150 "lexico.l"
-{ return DIST; }
+#line 167 "lexico.l"
+{ return MAY_I; }
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 151 "lexico.l"
-{ return IGU; }
+#line 168 "lexico.l"
+{ return DIST; }
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 152 "lexico.l"
-{ return NOT; }
+#line 169 "lexico.l"
+{ return IGU; }
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 154 "lexico.l"
+#line 172 "lexico.l"
 {return ID; }
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 156 "lexico.l"
+#line 174 "lexico.l"
 {;}
 	YY_BREAK
 case 44:
 /* rule 44 can match eol */
 YY_RULE_SETUP
-#line 159 "lexico.l"
+#line 177 "lexico.l"
 
 	YY_BREAK
 case 45:
 /* rule 45 can match eol */
 YY_RULE_SETUP
-#line 160 "lexico.l"
+#line 178 "lexico.l"
 
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 161 "lexico.l"
+#line 179 "lexico.l"
 
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 162 "lexico.l"
+#line 180 "lexico.l"
 
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 164 "lexico.l"
-printf("\nCaracter Desconocido: %s\n", yytext);
+#line 182 "lexico.l"
+{printf("\nCaracter Desconocido: %s\n", yytext); yyerror();}
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 166 "lexico.l"
+#line 184 "lexico.l"
 ECHO;
 	YY_BREAK
-#line 1128 "lex.yy.c"
+#line 1146 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2133,14 +2151,10 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 166 "lexico.l"
+#line 184 "lexico.l"
 
 
 
-int yyerror(void)
-	{
-	printf("Error Lexico");
-	system ("Pause");
-	exit (1);
-	}
+
+
 
