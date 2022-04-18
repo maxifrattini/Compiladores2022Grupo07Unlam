@@ -16,7 +16,7 @@ int yyerror(void)
 	exit (1);
 	}
 
-int verifica(char *ptr){
+int verificaInt(char *ptr){
 	int value = atoi(ptr);
 	if (value < -32768 || value > 32767 ) {
 		printf("\nError Variable fuera de rango!! %s\n", yytext);
@@ -26,6 +26,29 @@ int verifica(char *ptr){
 	return 0;
 
 }
+
+double verificaReal(char *ptrf){
+	double valuef = atoi(ptrf);
+	if (valuef < -2147483648 || valuef > 2147483647 )  {
+		printf("\nERROR Lexico - Float \'%s\' fuera de rango. Debe estar entre [−2.147.483.648 +2.147.483.647]\n",yytext);
+		return yyerror();
+		
+	}
+	return 0;
+
+}
+
+int verificaString(char *ptrs){	
+	int longitud = strlen(ptrs);
+							//en lugar de 30 verifica con 32 porque el string viene entre comillas
+							if(longitud > 32){
+								char msg[150];
+								printf("ERROR Lexico - Cadena \'%s\' demasiado larga. Maximo de 30 caracteres y contiene: %d", yytext, longitud-2);
+								return yyerror();
+							}
+							return 0;
+								
+						}
 
 
 %}
@@ -45,8 +68,9 @@ FINCOMEN	"/-"
 
 /* 0?"."{DIGITO}*|{1-9}+"."{DIGITO}*  */
 
-CTE_REAL	{DIGITO}+"."{DIGITO}*
+
 CTE_INT		(-?[1-9]{DIGITO}*)|0
+CTE_REAL	{DIGITO}+"."{DIGITO}*
 CTE_STRING	\"({LETRA}|{DIGITO}|{CARACTER})+\"
 
 COMENTARIOS		"-/"({LETRA}|{DIGITO}|{CARACTER})+"/-"
@@ -113,9 +137,9 @@ STRING		"string"|"STRING"
 
 {OP_AS}				{ return OP_AS; }
 
-{CTE_INT}			{ verifica(yytext); return CTE_INT; }
-{CTE_REAL}			{ return CTE_REAL; }
-{CTE_STRING}		{ return CTE_STRING; }
+{CTE_INT}			{ verificaInt(yytext); return CTE_INT; }
+{CTE_REAL}			{ printf("\nTipo Real: %s\n", yytext); verificaReal(yytext); return CTE_REAL; }
+{CTE_STRING}		{ verificaString(yytext); return CTE_STRING; }
 
 {INT}				{ return INT; }
 {REAL}				{ return REAL; }

@@ -597,7 +597,7 @@ int yyerror(void)
 	exit (1);
 	}
 
-int verifica(char *ptr){
+int verificaInt(char *ptr){
 	int value = atoi(ptr);
 	if (value < -32768 || value > 32767 ) {
 		printf("\nError Variable fuera de rango!! %s\n", yytext);
@@ -608,6 +608,29 @@ int verifica(char *ptr){
 
 }
 
+double verificaReal(char *ptrf){
+	double valuef = atoi(ptrf);
+	if (valuef < -2147483648 || valuef > 2147483647 )  {
+		printf("\nERROR Lexico - Float \'%s\' fuera de rango. Debe estar entre [−2.147.483.648 +2.147.483.647]\n",yytext);
+		return yyerror();
+		
+	}
+	return 0;
+
+}
+
+int verificaString(char *ptrs){	
+	int longitud = strlen(ptrs);
+							//en lugar de 30 verifica con 32 porque el string viene entre comillas
+							if(longitud > 32){
+								char msg[150];
+								printf("ERROR Lexico - Cadena \'%s\' demasiado larga. Maximo de 30 caracteres y contiene: %d", yytext, longitud-2);
+								return yyerror();
+							}
+							return 0;
+								
+						}
+
 
 /* Para conseguir el numero de lineas */
 /* 0?"."{DIGITO}*|{1-9}+"."{DIGITO}*  */
@@ -616,7 +639,7 @@ int verifica(char *ptr){
 /* Palabras reservadas sentencias */
 /* Palabras reservadas finciones especiales */
 /* Palabras reservadas tipo de datos */
-#line 620 "lex.yy.c"
+#line 643 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -798,11 +821,11 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
     
-#line 111 "lexico.l"
+#line 135 "lexico.l"
 
 
 
-#line 806 "lex.yy.c"
+#line 829 "lex.yy.c"
 
 	if ( !(yy_init) )
 		{
@@ -897,252 +920,252 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 114 "lexico.l"
+#line 138 "lexico.l"
 { return OP_AS; }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 116 "lexico.l"
-{ verifica(yytext); return CTE_INT; }
+#line 140 "lexico.l"
+{ verificaInt(yytext); return CTE_INT; }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 117 "lexico.l"
-{ return CTE_REAL; }
+#line 141 "lexico.l"
+{ printf("\nTipo Real: %s\n", yytext); verificaReal(yytext); return CTE_REAL; }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 118 "lexico.l"
-{ return CTE_STRING; }
+#line 142 "lexico.l"
+{ verificaString(yytext); return CTE_STRING; }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 120 "lexico.l"
+#line 144 "lexico.l"
 { return INT; }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 121 "lexico.l"
+#line 145 "lexico.l"
 { return REAL; }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 122 "lexico.l"
+#line 146 "lexico.l"
 { return STRING; }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 124 "lexico.l"
+#line 148 "lexico.l"
 { return IF; }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 125 "lexico.l"
+#line 149 "lexico.l"
 { return THEN; }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 126 "lexico.l"
+#line 150 "lexico.l"
 { return ELSE; }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 127 "lexico.l"
+#line 151 "lexico.l"
 { return WHILE; }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 128 "lexico.l"
+#line 152 "lexico.l"
 { return DO; }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 129 "lexico.l"
+#line 153 "lexico.l"
 { return FOR; }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 131 "lexico.l"
+#line 155 "lexico.l"
 { return AND; }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 132 "lexico.l"
+#line 156 "lexico.l"
 { return OR; }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 133 "lexico.l"
+#line 157 "lexico.l"
 { return NOT; }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 135 "lexico.l"
+#line 159 "lexico.l"
 { return BETWEEN; }
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 136 "lexico.l"
+#line 160 "lexico.l"
 { return AVG; }
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 137 "lexico.l"
+#line 161 "lexico.l"
 { return DECVAR; }
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 138 "lexico.l"
+#line 162 "lexico.l"
 { return ENDDEC; }
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 140 "lexico.l"
+#line 164 "lexico.l"
 { return WRITE; }
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 141 "lexico.l"
+#line 165 "lexico.l"
 { return READ; }
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 143 "lexico.l"
+#line 167 "lexico.l"
 { return PARA; }
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 144 "lexico.l"
+#line 168 "lexico.l"
 { return PARC; }
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 145 "lexico.l"
+#line 169 "lexico.l"
 { return CORA; }
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 146 "lexico.l"
+#line 170 "lexico.l"
 { return CORC; }
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 147 "lexico.l"
+#line 171 "lexico.l"
 { return LLAVA; }
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 148 "lexico.l"
+#line 172 "lexico.l"
 { return LLAVC; }
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 153 "lexico.l"
+#line 177 "lexico.l"
 { return OP_SUM; }
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 154 "lexico.l"
+#line 178 "lexico.l"
 { return OP_RES; }
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 155 "lexico.l"
+#line 179 "lexico.l"
 { return OP_MUL; }
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 156 "lexico.l"
+#line 180 "lexico.l"
 { return OP_DIV; }
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 159 "lexico.l"
+#line 183 "lexico.l"
 { return COMA; }
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 160 "lexico.l"
+#line 184 "lexico.l"
 { return PCOMA; }
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 161 "lexico.l"
+#line 185 "lexico.l"
 { return DPUNTO; }
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 164 "lexico.l"
+#line 188 "lexico.l"
 { return MEN; }
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 165 "lexico.l"
+#line 189 "lexico.l"
 { return MAY; }	
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 166 "lexico.l"
+#line 190 "lexico.l"
 { return MEN_I; }
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 167 "lexico.l"
+#line 191 "lexico.l"
 { return MAY_I; }
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 168 "lexico.l"
+#line 192 "lexico.l"
 { return DIST; }
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 169 "lexico.l"
+#line 193 "lexico.l"
 { return IGU; }
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 172 "lexico.l"
+#line 196 "lexico.l"
 {return ID; }
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 174 "lexico.l"
+#line 198 "lexico.l"
 {;}
 	YY_BREAK
 case 44:
 /* rule 44 can match eol */
 YY_RULE_SETUP
-#line 177 "lexico.l"
+#line 201 "lexico.l"
 
 	YY_BREAK
 case 45:
 /* rule 45 can match eol */
 YY_RULE_SETUP
-#line 178 "lexico.l"
+#line 202 "lexico.l"
 
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 179 "lexico.l"
+#line 203 "lexico.l"
 
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 180 "lexico.l"
+#line 204 "lexico.l"
 
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 182 "lexico.l"
+#line 206 "lexico.l"
 {printf("\nCaracter Desconocido: %s\n", yytext); yyerror();}
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 184 "lexico.l"
+#line 208 "lexico.l"
 ECHO;
 	YY_BREAK
-#line 1146 "lex.yy.c"
+#line 1169 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2151,7 +2174,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 184 "lexico.l"
+#line 208 "lexico.l"
 
 
 
