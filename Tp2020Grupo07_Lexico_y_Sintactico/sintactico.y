@@ -28,24 +28,24 @@ progra : programa {printf("\nProgra : Programa \n");}
 programa : sentencia {printf("\nPrograma : Sentencia \n");}
 programa : programa sentencia {printf("\nPrograma : Programa Sentencia \n");}
 
-sentencia : DECVAR declaraciones ENDDEC {printf("\nDEFVAR declaraciones ENDDEF \n");}
+sentencia : DECVAR declaraciones ENDDEC {printf("\nSentencia : DECVAR declaraciones ENDDEC\n");}
 
-sentencia : WRITE ID {printf("\nsentencia : WRITE ID\n");}
-sentencia : WRITE CTE_STRING {printf("\nsentencia : WRITE CADENA\n");}
+sentencia : WRITE ID {printf("\nSentencia : WRITE ID\n");}
+sentencia : WRITE CTE_STRING {printf("\nSentencia : WRITE CADENA\n");}
 
-sentencia : READ ID {printf("\nsentencia : READ ID\n");}
-sentencia : READ CTE_STRING {printf("\nsentencia : READ CADENA\n");}
+sentencia : READ ID {printf("\nSentencia : READ ID\n");}
+sentencia : READ CTE_STRING {printf("\nSentencia : READ CADENA\n");}
 
 declaraciones: declaracion {printf("\nDeclaraciones : declaracion\n");}
 declaraciones:  declaraciones declaracion {printf("\nDeclaraciones: declaraciones declaracion \n");}
 
 declaracion : listavar DPUNTO tdato PCOMA {printf("\nDeclaracion : ID COMA ID DPUNTO INT PCOMA\n");}
 declaracion : listavar DPUNTO tdato OP_AS expresion PCOMA {printf("\nDeclaracion : ID COMA ID DPUNTO INT OP_AS expresion PCOMA\n");}
-listavar : ID
-listavar : listavar COMA ID
-tdato : INT
-tdato : STRING
-tdato : REAL
+listavar : ID {printf("\nlistavar : ID \n");}
+listavar : listavar COMA ID {printf("\nlistavar : listavar COMA ID \n");}
+tdato : INT {printf("\ntdato : INT \n");}
+tdato : STRING {printf("\ntdato : STRING \n");}
+tdato : REAL {printf("\ntdato : REAL \n");}
 
 
 sentencia : asignacion {printf("\nSentencia : asignacion  \n");}
@@ -61,27 +61,22 @@ seleccion : IF condicion THEN asignacion {printf("\nSeleccion : IF condicion THE
 
 iteracion : WHILE condicion LLAVA programa LLAVC {printf("\nIteracion : WHILE condicion LLAVA programa LLAVC \n");}
 
-condicion : comparacion {printf("\nComparacion \n");} 
-condicion : condicion AND comparacion {printf("\nCondicion AND Comparacion \n");} 
-condicion : condicion OR comparacion {printf("\nCondicion OR Comparacion \n");} 
+condicion : comparacion {printf("\nCondicion : comparacion \n");} 
+condicion : condicion AND comparacion {printf("\nCondicion : condicion AND comparacion  \n");} 
+condicion : condicion OR comparacion {printf("\nCondicion : condicion OR comparacion \n");} 
 
-comparacion : BETWEEN PARA ID COMA CORA expresion PCOMA expresion CORC PARC
+comparacion : BETWEEN PARA ID COMA CORA expresion PCOMA expresion CORC PARC {printf("\ncomparacion : BETWEEN PARA ID COMA CORA expresion PCOMA expresion CORC PARC \n");} 
 
-comparacion : expresion comparador expresion {printf("\n Expresion Comparacion Expresion : < \n");} 
+comparacion : expresion comparador expresion {printf("\nComparacion : expresion comparador expresion \n");} 
+comparacion : PARA expresion comparador expresion PARC {printf("\nComparacion : expresion comparador expresion \n");} 
+comparacion : NOT PARA expresion comparador expresion PARC {printf("\nComparacion : expresion comparador expresion \n");} 
 
-comparador : MEN {printf("\n Comparador : < \n");} 
-comparador : MAY {printf("\n Comparador : > \n");} 
-comparador : MEN_I {printf("\n Comparador : >= \n");} 
-comparador : MAY_I {printf("\n Comparador : <= \n");} 
-comparador : DIST {printf("\n Comparador : != \n");} 
-comparador : IGU {printf("\n Comparador : == \n");} 
-
-comparador : NOT MEN {printf("\n Comparador : < \n");} 
-comparador : NOT MAY {printf("\n Comparador : > \n");} 
-comparador : NOT MEN_I {printf("\n Comparador : >= \n");} 
-comparador : NOT MAY_I {printf("\n Comparador : <= \n");} 
-comparador : NOT DIST {printf("\n Comparador : != \n");} 
-comparador : NOT IGU {printf("\n Comparador : == \n");} 
+comparador : MEN {printf("\n Comparador : MEN  \n");} 
+comparador : MAY {printf("\n Comparador : MAY \n");} 
+comparador : MEN_I {printf("\n Comparador : MEN_I \n");} 
+comparador : MAY_I {printf("\n Comparador : MAY_I \n");} 
+comparador : DIST {printf("\n Comparador : DIST \n");} 
+comparador : IGU {printf("\n Comparador : IGU \n");} 
 
 expresion : expresion OP_SUM termino {printf("\nExpresion : Expresion OP_SUM Termino\n");} 
 expresion : expresion OP_RES termino {printf("\nExpresion : Expresion OP_RES Termino\n");} 

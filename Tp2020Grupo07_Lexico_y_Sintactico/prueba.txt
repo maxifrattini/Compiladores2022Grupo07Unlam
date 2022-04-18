@@ -10,7 +10,7 @@ zeta := "Hola mundo"
 
 READ H 
 
-IF a > b AND BETWEEN (a, [2 ; a*(b+4)])
+IF a > b AND BETWEEN (a, [2 ; a*(b+4)]) and (b == 5)
 
  THEN 
  
@@ -21,7 +21,7 @@ IF a > b AND BETWEEN (a, [2 ; a*(b+4)])
  b:= a + 2
  
 
-while a > b 
+while != ( a > b ) and y > t
 {
 
     x := x / 3

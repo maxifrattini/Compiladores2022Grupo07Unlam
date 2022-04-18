@@ -112,7 +112,7 @@ STRING		"string"|"STRING"
 
 {AND}				{ return AND; }
 {OR}				{ return OR; }
-
+{NOT}				{ return NOT; }
 
 {BETWEEN}			{ return BETWEEN; }
 {AVG}				{ return AVG; }
@@ -149,9 +149,9 @@ STRING		"string"|"STRING"
 {MAY_I}				{ return MAY_I; }
 {DIST}				{ return DIST; }
 {IGU}				{ return IGU; }
-{NOT}				{ return NOT; }
 
-{ID}		{return ID; }
+
+{ID}				{return ID; }
 
 {COMENTARIOS}			{;}
 
