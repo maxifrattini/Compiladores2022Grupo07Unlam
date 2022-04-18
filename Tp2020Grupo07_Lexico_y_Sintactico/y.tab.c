@@ -1967,7 +1967,7 @@ yyreturn:
 }
 
 
-#line 98 "sintactico.y"
+#line 97 "sintactico.y"
 
 
 int main(int argc,char *argv[])

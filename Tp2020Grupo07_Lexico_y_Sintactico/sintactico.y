@@ -94,7 +94,6 @@ factor: AVG CORA lista CORC {printf("\nSentecia : ID OP_AS AVG PARA lista PARC \
 lista : expresion {printf("\nlista : expresion \n");} 
 lista : lista COMA expresion {printf("\nlista : lista COMA expresion \n");} 
 
-
 %%
 
 int main(int argc,char *argv[])
