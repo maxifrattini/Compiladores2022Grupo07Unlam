@@ -1,0 +1,17 @@
+flex lexico.l
+
+bison -dyv sintactico.y 
+
+gcc lex.yy.c y.tab.c -o primera.exe
+
+./primera.exe prueba.txt
+
+
+
+//Comandos repo
+//git add .
+//git commit -m “Comentario”
+//git push origin main
+
+//git status -s
+
