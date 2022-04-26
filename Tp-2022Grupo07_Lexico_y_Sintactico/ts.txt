@@ -1,0 +1,19 @@
+lexema                 Tipo           Valor                       Longitud
+a                      INT                                        
+b                      INT                                        
+c                      REAL                                       
+d                      STRING                                     
+_-4000                                -4000                       
+t                                                                 
+_600.8545                             600.8545                    
+zeta                                                              
+H                                                                 
+_2                                    2                           
+_4                                    4                           
+_5                                    5                           
+_1                                    1                           
+_2                                    2                           
+y                                                                 
+x                                                                 
+_3                                    3                           
+_1                                    1                           

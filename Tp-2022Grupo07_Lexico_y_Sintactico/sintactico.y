@@ -7,7 +7,7 @@ int yylval;
 int yyerror();
 
 int yylex();
-
+void guardarTS_Archivo();
 
 %}
 
@@ -24,7 +24,7 @@ int yylex();
 %start progra
 
 %%
-progra : programa {printf("\nProgra : Programa \n");}
+progra : programa {printf("\nProgra : Programa \n");  guardarTS_Archivo();}
 programa : sentencia {printf("\nPrograma : Sentencia \n");}
 programa : programa sentencia {printf("\nPrograma : Programa Sentencia \n");}
 

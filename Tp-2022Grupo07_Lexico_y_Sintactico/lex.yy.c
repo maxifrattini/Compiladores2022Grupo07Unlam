@@ -584,10 +584,30 @@ char *yytext;
 #include <stdlib.h>
 #include <string.h>
 #include "y.tab.h"
+#include <string.h>
 
 FILE *yyin;
 
 int yylval; 
+
+void guardarTS_Archivo();
+void guardarLexemas(char *,int);
+void guardarTS(char *);
+int buscar(char *);
+
+int i=0;
+int k=0;
+
+void capturaTipo(char *);
+
+typedef struct {
+       		    char lexema[50];
+                char tipoDato[100];
+                char  valor[30];
+				char longitud[25];
+	            } tsimbolos;
+
+tsimbolos ts[100]; //pila con lexemas para agregar a la TS, puede guardar 100 lexemas. 
 
 int yyerror(void)
 	{
@@ -638,7 +658,7 @@ int verificaString(char *ptrs){
 /* Palabras reservadas sentencias */
 /* Palabras reservadas finciones especiales */
 /* Palabras reservadas tipo de datos */
-#line 642 "lex.yy.c"
+#line 662 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -820,11 +840,11 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
     
-#line 134 "lexico.l"
+#line 154 "lexico.l"
 
 
 
-#line 828 "lex.yy.c"
+#line 848 "lex.yy.c"
 
 	if ( !(yy_init) )
 		{
@@ -919,252 +939,252 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 137 "lexico.l"
+#line 157 "lexico.l"
 { return OP_AS; }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 139 "lexico.l"
-{ verificaInt(yytext); return CTE_INT; }
+#line 159 "lexico.l"
+{ verificaInt(yytext); guardarLexemas(yytext,2); return CTE_INT; }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 140 "lexico.l"
-{ printf("\nTipo Real: %s\n", yytext); verificaReal(yytext); return CTE_REAL; }
+#line 160 "lexico.l"
+{ printf("\nTipo Real: %s\n", yytext); guardarLexemas(yytext,3); verificaReal(yytext); return CTE_REAL; }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 141 "lexico.l"
+#line 161 "lexico.l"
 { verificaString(yytext); return CTE_STRING; }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 143 "lexico.l"
-{ return INT; }
+#line 163 "lexico.l"
+{ capturaTipo(yytext); return INT; }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 144 "lexico.l"
-{ return REAL; }
+#line 164 "lexico.l"
+{ capturaTipo(yytext); return REAL; }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 145 "lexico.l"
-{ return STRING; }
+#line 165 "lexico.l"
+{ capturaTipo(yytext); return STRING; }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 147 "lexico.l"
+#line 167 "lexico.l"
 { return IF; }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 148 "lexico.l"
+#line 168 "lexico.l"
 { return THEN; }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 149 "lexico.l"
+#line 169 "lexico.l"
 { return ELSE; }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 150 "lexico.l"
+#line 170 "lexico.l"
 { return WHILE; }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 151 "lexico.l"
+#line 171 "lexico.l"
 { return DO; }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 152 "lexico.l"
+#line 172 "lexico.l"
 { return FOR; }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 154 "lexico.l"
+#line 174 "lexico.l"
 { return AND; }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 155 "lexico.l"
+#line 175 "lexico.l"
 { return OR; }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 156 "lexico.l"
+#line 176 "lexico.l"
 { return NOT; }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 158 "lexico.l"
+#line 178 "lexico.l"
 { return BETWEEN; }
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 159 "lexico.l"
+#line 179 "lexico.l"
 { return AVG; }
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 160 "lexico.l"
+#line 180 "lexico.l"
 { return DECVAR; }
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 161 "lexico.l"
+#line 181 "lexico.l"
 { return ENDDEC; }
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 163 "lexico.l"
+#line 183 "lexico.l"
 { return WRITE; }
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 164 "lexico.l"
+#line 184 "lexico.l"
 { return READ; }
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 166 "lexico.l"
+#line 186 "lexico.l"
 { return PARA; }
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 167 "lexico.l"
+#line 187 "lexico.l"
 { return PARC; }
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 168 "lexico.l"
+#line 188 "lexico.l"
 { return CORA; }
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 169 "lexico.l"
+#line 189 "lexico.l"
 { return CORC; }
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 170 "lexico.l"
+#line 190 "lexico.l"
 { return LLAVA; }
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 171 "lexico.l"
+#line 191 "lexico.l"
 { return LLAVC; }
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 176 "lexico.l"
+#line 196 "lexico.l"
 { return OP_SUM; }
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 177 "lexico.l"
+#line 197 "lexico.l"
 { return OP_RES; }
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 178 "lexico.l"
+#line 198 "lexico.l"
 { return OP_MUL; }
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 179 "lexico.l"
+#line 199 "lexico.l"
 { return OP_DIV; }
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 182 "lexico.l"
+#line 202 "lexico.l"
 { return COMA; }
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 183 "lexico.l"
+#line 203 "lexico.l"
 { return PCOMA; }
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 184 "lexico.l"
+#line 204 "lexico.l"
 { return DPUNTO; }
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 187 "lexico.l"
+#line 207 "lexico.l"
 { return MEN; }
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 188 "lexico.l"
+#line 208 "lexico.l"
 { return MAY; }	
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 189 "lexico.l"
+#line 209 "lexico.l"
 { return MEN_I; }
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 190 "lexico.l"
+#line 210 "lexico.l"
 { return MAY_I; }
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 191 "lexico.l"
+#line 211 "lexico.l"
 { return DIST; }
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 192 "lexico.l"
+#line 212 "lexico.l"
 { return IGU; }
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 195 "lexico.l"
-{return ID; }
+#line 215 "lexico.l"
+{guardarLexemas(yytext,0); return ID; }
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 197 "lexico.l"
+#line 217 "lexico.l"
 {;}
 	YY_BREAK
 case 44:
 /* rule 44 can match eol */
 YY_RULE_SETUP
-#line 200 "lexico.l"
+#line 220 "lexico.l"
 
 	YY_BREAK
 case 45:
 /* rule 45 can match eol */
 YY_RULE_SETUP
-#line 201 "lexico.l"
+#line 221 "lexico.l"
 
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 202 "lexico.l"
+#line 222 "lexico.l"
 
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 203 "lexico.l"
+#line 223 "lexico.l"
 
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 205 "lexico.l"
+#line 225 "lexico.l"
 {printf("\nCaracter Desconocido: %s\n", yytext); yyerror();}
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 207 "lexico.l"
+#line 227 "lexico.l"
 ECHO;
 	YY_BREAK
-#line 1168 "lex.yy.c"
+#line 1188 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2173,10 +2193,120 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 207 "lexico.l"
+#line 227 "lexico.l"
 
 
 
 
 
+void guardarTS_Archivo()
+{
+FILE* arch;
+int x;
+
+    arch = fopen("ts.txt", "w+");
+
+	if (!arch){
+		printf("Error. No se pudo crear el archivo ts.txt");
+	exit(1);
+	}
+	fprintf(arch,"%-23s%-15s%-28s%8s\n","lexema","Tipo","Valor","Longitud");
+	for(x=0;x<i;x++){
+
+	fprintf(arch,"%-23s%-15s%-20s%8s",ts[x].lexema,ts[x].tipoDato,ts[x].valor,ts[x].longitud);
+	fprintf(arch,"\n");
+	}
+
+	 fclose(arch);
+}
+
+void guardarLexemas(char *lexema,int val)
+{
+
+     if(val==0)
+	{
+
+	   if(buscar(lexema)!=0)
+	   {
+	      strcpy(ts[i].lexema,lexema);
+		  i++;//incremento para conocer la cantidad de id que hay en la ctes
+	   }
+
+
+	}
+    if(val==1)
+	{
+	    char *s=lexema;
+		s++;//adelanto el puntero para que no tome la 1eras comillas
+		int n=strlen(lexema)-2;//le resto 2 para que no copie las comillas (iniciales y finales)
+		strncpy(lexema,s,n);
+		while(n > 1)//llevo el puntero hasta la posicion que debe finalizar el string
+		{
+			n--;
+		    s++;
+		}
+	    memset(s, '\0',n);//marco el fin del string
+
+	  if(buscar(lexema)!=0)
+	  {
+
+	   strcpy(ts[i].lexema,"_");
+       strcat(ts[i].lexema,lexema);;
+	   strcpy(ts[i].valor,lexema);
+	   #if defined(_WIN32)
+	       itoa(strlen(lexema),ts[i].longitud,10);
+       #else
+           sprintf(ts[i].longitud, "%ld", strlen(lexema));
+       #endif
+        i++;//incremento para conocer la cantidad de id que hay en la ctes
+      }
+
+	}
+   if(val==2)
+	{
+
+    if(buscar(lexema)!=0)
+	 {
+	   strcpy(ts[i].lexema,"_");
+       strcat(ts[i].lexema,lexema);
+	   strcpy(ts[i].valor,lexema);
+
+	    i++;//incremento para conocer la cantidad de id que hay en la ctes
+      }
+
+
+	}
+     if(val==3)
+	{
+
+    if(buscar(lexema)!=0)
+	 {
+	   strcpy(ts[i].lexema,"_");
+       strcat(ts[i].lexema,lexema);
+	   strcpy(ts[i].valor,lexema);
+	   i++;//incremento para conocer la cantidad de id que hay en la ctes
+      }
+
+
+	}
+
+}
+
+int buscar(char * lexema)
+{
+ int x;
+  for(x=0;x<i;x++){//50 cantidad de lexemas en la tabla
+  if(strcmp(ts[x].lexema,lexema)==0)
+   return 0;
+  }
+   return 1;
+}
+
+
+
+void capturaTipo(char * tvar)
+ {
+	strcpy(ts[k].tipoDato,tvar);
+	k++;
+}
 

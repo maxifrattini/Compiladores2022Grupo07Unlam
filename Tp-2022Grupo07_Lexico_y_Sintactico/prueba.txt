@@ -40,4 +40,4 @@ WRITE "ESTE ES EL FIN@ESTE ES EL FIN"
 
 -/ Esto es un comentario/-
 
-@
+-/ @ /-

@@ -170,7 +170,7 @@ int yylval;
 int yyerror();
 
 int yylex();
-
+void guardarTS_Archivo();
 
 
 
@@ -1498,7 +1498,7 @@ yyreduce:
     {
         case 2:
 #line 27 "sintactico.y"
-    {printf("\nProgra : Programa \n");}
+    {printf("\nProgra : Programa \n");  guardarTS_Archivo();}
     break;
 
   case 3:
